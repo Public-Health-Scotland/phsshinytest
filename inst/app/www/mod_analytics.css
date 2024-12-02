@@ -1,0 +1,61 @@
+#analytics_nav li a span {
+    font-size: 1rem;
+}
+
+.analytics-nav div div.col-sm-3 {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+.analytics-subhead div.form-group {
+    width: 150px;
+}
+
+.analytics-nav div div.col-sm-9 {
+    padding-left: 1.5rem;
+}
+
+.value-box-showcase {
+    font-size: 3rem;
+}
+
+.bslib-nav-item  div {
+    margin-top: 3rem;
+    color: #3F3685;
+    box-shadow: none;
+}
+
+@media (max-width: 992px) {
+    #analytics_nav {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .analytics-nav div div.col-sm-3 {
+        width: 100%;
+        background-color: white;
+    }
+
+    .analytics-nav div div.col-sm-9 {
+        width: 100%;
+    }
+
+    .analytics-nav .nav-pills .nav-link {
+        padding: 0.5rem 1rem;
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+    }
+
+    .analytics-nav .nav-pills .nav-link span {
+        display: none;
+    }
+
+    .analytics-nav .nav-pills .nav-link i {
+        font-size: 1.25rem;
+    }
+
+    li.bslib-nav-item.nav-item.form-inline {
+        display: none;
+    }
+}

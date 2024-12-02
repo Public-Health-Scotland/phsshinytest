@@ -1,0 +1,64 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 2rem;
+}
+
+/* <xs */
+@media (min-width: 576px) {
+  nav div.container-fluid {
+  max-width: 540px;
+  }
+}
+
+/* <sm */
+@media (min-width: 768px) {
+  nav div.container-fluid {
+    max-width: 720px;
+  }
+}
+
+/* <md */
+@media (min-width: 992px) {
+  nav div.container-fluid {
+    max-width: 960px;
+  }
+}
+
+/* <lg */
+@media (min-width: 1200px) {
+  nav div.container-fluid {
+    max-width: 1140px;
+  }
+}
+
+/* <xl */
+@media (min-width: 1400px) {
+  nav div.container-fluid {
+    max-width: 1320px;
+  }
+}
+
+.navbar-brand {
+  font-size: 20px;
+}
+
+.analytics-subhead .form-group {
+  width: 150px !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.dt-buttons button {
+  background-color: var(--bs-light);
+  color: var(--bs-body-color);
+  border: none;
+}
+
+.dt-buttons button:hover {
+  background-color: var(--bs-secondary);
+  color: white;
+}
