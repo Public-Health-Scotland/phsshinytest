@@ -1,0 +1,38 @@
+Package: phsshinytestgolem
+Title: A PHS test Shiny application
+Version: 0.0.0.9000
+Authors@R: 
+    person("Russell", "McCreath", , "russell.mccreath@phs.scot", role = c("aut", "cre"))
+Description: A test Shiny application for PHS to test functionality,
+    coding and deployment practices, while aligning to best practice.
+License: What license is it under?
+URL: https://github.com/Public-Health-Scotland/phsshinytestgolem
+BugReports: 
+    https://github.com/Public-Health-Scotland/phsshinytestgolem/issues
+Imports: 
+    attempt,
+    DT,
+    glue,
+    htmltools,
+    pkgload,
+    DBI,
+    RSQLite,
+    bslib,
+    config,
+    golem,
+    shinipsum,
+    shiny,
+    dplyr,
+    ggplot2,
+    lubridate,
+    shinycssloaders,
+    rmarkdown,
+    pandoc
+Suggests: 
+    spelling,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+RoxygenNote: 7.3.2
