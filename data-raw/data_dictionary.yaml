@@ -1,0 +1,54 @@
+nhs_boards:
+- board_id
+- board_name
+services:
+- service_id
+- board_id
+- service_name
+service_users:
+- service_user_id
+- chi_number
+- first_name
+- date_of_birth
+- sex
+- postcode
+- ethnicity
+referral_sources:
+- referral_source_id
+- source_name
+- source_category
+treatment_types:
+- treatment_type_id
+- treatment_name
+- treatment_category
+episodes:
+- episode_id
+- service_user_id
+- service_id
+- referral_date
+- referral_source_id
+- discharged_before_treatment
+- episode_status
+- episode_end_date
+treatments:
+- treatment_id
+- episode_id
+- treatment_type_id
+- start_date
+- end_date
+- outcome_score
+- completion_status
+assessments:
+- assessment_id
+- episode_id
+- assessment_date
+- assessment_type
+- social_score
+- housing_score
+- health_score
+- education_score
+- employment_score
+- finance_score
+- wellbeing_score
+- risk_score
+
