@@ -1,0 +1,50 @@
+---
+params:
+  service: NA
+  active_referrals: NA
+  assessments_due: NA
+output:
+  word_document:
+    reference_docx: "phs-mngtinfo-onepage.docx"
+    fig_caption: no
+  html:
+    theme: null
+    css: null
+    includes:
+      in_header: null
+      before_body: null
+      after_body: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+<Div custom-style = "Publication Title">`r params$service`</Div>
+<Div custom-style = "Publication subtitle">Test Data Report</Div>
+<Div custom-style = "Stats designation">A Management information release for Scotland</Div>
+<Div custom-style = "Publication date">Publication date: `r format(Sys.time(), '%d %B %Y')`</Div>
+
+# About this release
+Vestibulum lacinia, turpis eu sagittis lacinia, justo orci blandit orci, ut suscipit tortor turpis et metus. Pellentesque sollicitudin nisl et porttitor laoreet. Nunc id purus pretium, suscipit justo vitae, pretium dui. Quisque congue ex dignissim tellus pulvinar, a interdum libero fermentum.
+
+<Div custom-style = "Bullet 1">Curabitur luctus luctus lorem, at commodo mauris rutrum quis. Mauris aliquet turpis vel magna bibendum hendrerit. Nulla finibus porta sapien ut pretium. Aliquam elementum mauris.</Div>
+<Div custom-style = "Bullet 2">Vivamus luctus varius nibh, a scelerisque ex tincidunt non. Etiam dignissim.</Div>
+
+# Overview
+
+This report provides an analysis of data from `r params$selected_org`.
+
+* Active referrals: `r params$active_referrals`
+* Assessments due: `r params$assessments_due`
+
+# Further information
+Vestibulum lacinia, turpis eu sagittis lacinia, justo orci blandit orci, ut suscipit tortor turpis et metus. 
+The next release of this publication will be DD Month YYYY.
+
+Other formats of this publication are available on request by calling 0131 314 5300 or emailing [phs.otherformats@phs.scot](mailto:phs.otherformats@phs.scot).
+
+# Contact
+Name | Role | Number | [phs.generic-team-email@phs.scot](mailto:phs.generic-team-email@phs.scot)
+
+For all media enquiries please email [phs.comms@phs.scot](mailto:phs.comms@phs.scot) or call 0131 275 6105.
