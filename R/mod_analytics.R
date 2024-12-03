@@ -104,7 +104,7 @@ mod_analytics_server <- function(id){
     data <- mod_data_mgr_server("data_mgr")
 
     mod_analytics_overview_server("overview", data)
-    # mod_analytics_admissions_server("admissions", data)
+    mod_analytics_admissions_server("admissions", data)
     # mod_analytics_assessments_server("assessments", data)
     # mod_analytics_treatment_server("treatment", data)
     # mod_analytics_data_server("data", data)

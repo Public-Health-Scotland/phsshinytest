@@ -11,8 +11,4 @@ app_server <- function(input, output, session) {
   mod_report_server("reporting")
   mod_open_data_server("open_data")
 
-  data <- mod_data_mgr_server("data_mgr")
-  
-  mod_analytics_overview_server("overview", data)
-
 }
