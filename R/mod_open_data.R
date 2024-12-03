@@ -16,6 +16,15 @@ mod_open_data_ui <- function(id) {
       bslib::layout_sidebar(
         sidebar = div(
           h5("Open Data explorer"),
+          div(
+            class = "d-flex flex-wrap",
+            actionButton(
+              ns("open_data_retrieve"),
+              "Refresh data",
+              icon = icon("arrows-rotate"),
+              class = "btn-light flex-fill mb-3"
+            )
+          ),
           selectInput(
             ns("open_data_group"),
             "1. Group: ",
@@ -30,6 +39,15 @@ mod_open_data_ui <- function(id) {
             ns("open_data_resource"),
             "3. Resource: ",
             choices = NULL
+          ),
+          div(
+            class = "d-flex flex-wrap",
+            actionButton(
+              ns("open_data_view"),
+              "View data",
+              icon = icon("magnifying-glass"),
+              class = "btn-primary flex-fill mt-3"
+            )
           )
         ),
         bslib::layout_column_wrap(
@@ -39,7 +57,7 @@ mod_open_data_ui <- function(id) {
             title = "Selected data",
             status = "light",
             bslib::card_body(
-              DT::DTOutput(ns("open_data_preview")) |>
+              uiOutput(ns("open_data_view")) |>
                 shinycssloaders::withSpinner()
             )
           )
@@ -57,31 +75,57 @@ mod_open_data_server <- function(id){
     ns <- session$ns
 
     # Get groups
-    groups <- reactive({
-      get_groups()
+    observeEvent(input$open_data_retrieve, {
+      groups <- tryCatch({
+        withProgress(
+          message = "Loading data groups...",
+          value = 0.3,
+          {
+            get_groups()
+          }
+        )
+      }, error = function(e) {
+        showNotification(
+          "Failed to retrieve groups",
+          duration = 5,
+          type = "error"
+        )
+        message(e)
+        return(NULL)
+      })
+
+      observe({
+        group_choices <- setNames(groups$id, groups$title)
+
+        updateSelectInput(
+          session,
+          "open_data_group",
+          choices = group_choices
+        )
+      })
     })
-
-    observe({
-      group_choices <- setNames(get_groups()$id, get_groups()$title)
-
-      updateSelectInput(
-        session,
-        "open_data_group",
-        choices = group_choices
-      )
-    })
-
+    
     # Get datasets
     datasets <- reactive({
       req(input$open_data_group != "")
 
-      withProgress(
-        message = "Loading datasets...",
-        value = 0.3,
-        {
-          get_group_datasets(input$open_data_group)
-        }
-      )
+      tryCatch({
+        withProgress(
+          message = "Loading datasets...",
+          value = 0.6,
+          {
+            get_group_datasets(input$open_data_group)
+          }
+        )
+      }, error = function(e) {
+        showNotification(
+          "Failed to retrieve datasets",
+          duration = 5,
+          type = "error"
+        )
+        return(NULL)
+      })
+      
     })
 
     observe({
@@ -97,7 +141,7 @@ mod_open_data_server <- function(id){
         updateSelectInput(
           session,
           "open_data_dataset",
-          choices = dataset_choices,
+          choices = dataset_choices
         )
       }
     })
@@ -106,13 +150,22 @@ mod_open_data_server <- function(id){
     resources <- reactive({
       req(input$open_data_dataset != "")
 
-      withProgress(
-        message = "Loading resources...",
-        value = 0.6,
-        {
-          get_dataset_resources(input$open_data_dataset)
-        }
-      )
+      tryCatch({
+        withProgress(
+          message = "Loading resources...",
+          value = 0.9,
+          {
+            get_dataset_resources(input$open_data_dataset)
+          }
+        )
+      }, error = function(e) {
+        showNotification(
+          "Failed to retrieve resources",
+          duration = 5,
+          type = "error"
+        )
+        return(NULL)
+      })
     })
 
     observe({
@@ -133,29 +186,53 @@ mod_open_data_server <- function(id){
       }
     })
 
-    # Get and display data
-    output$open_data_preview <- DT::renderDT({
+    output$open_data_view <- renderUI({
+      if(!input$open_data_view || is.null(input$open_data_resource)) {
+        div(
+          class = "text-center",
+          p("Please refresh data and select a resource to view")
+        )
+      } else {
+        req(input$open_data_resource)
+        DT::DTOutput(ns("open_data_preview")) |>
+          shinycssloaders::withSpinner()
+      }
+    })
+
+    # Get and display data when button is clicked
+    observeEvent(input$open_data_view, {
       req(input$open_data_resource)
 
-      withProgress(
-        message = "Loading data...",
-        value = 0.9,
-        {
-          data <- get_resource_data(input$open_data_resource)
+      output$open_data_preview <- DT::renderDT({
+        withProgress(
+          message = "Loading data...",
+          value = 0.8,
+          {
+            data <- tryCatch({
+              get_resource_data(input$open_data_resource)
+            }, error = function(e) {
+              showNotification(
+                "Failed to retrieve data",
+                duration = 5,
+                type = "error"
+              )
+              return(NULL)
+            })
 
-          DT::datatable(
-            data,
-            options = list(
-              pageLength = 10,
-              scrollX = TRUE,
-              dom = "l<'sep'>Bfrtip",
-              buttons = c("copy", "csv", "excel", "print")
-            ),
-            extensions = c("Buttons"),
-            filter = "top"
-          )
-        }
-      )
+            DT::datatable(
+              data,
+              options = list(
+                pageLength = 10,  # Number of rows to display per page
+                scrollX = TRUE,  # Enable horizontal scrolling
+                dom = "l<'sep'>Bfrtip",  # Layout of the table controls
+                buttons = c("copy", "csv", "excel", "print")  # Export buttons
+              ),
+              extensions = c("Buttons"),  # Enable Buttons extension
+              filter = "top"  # Add a filter input box at the top of each column
+            )
+          }
+        )
+      })
     })
   })
 }
