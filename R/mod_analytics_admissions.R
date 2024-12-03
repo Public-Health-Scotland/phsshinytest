@@ -45,11 +45,13 @@ mod_analytics_admissions_server <- function(id, data){
     ns <- session$ns
 
     output$new_admissions <- renderText({
-      data$admission_stats()$new_admissions
+      #data$admission_stats()$new_admissions
+      1027
     })
 
     output$waiting_treatment <- renderText({
-      (data$admission_stats()$discharged_before_treatment)/2.1
+      #data$admission_stats()$discharged_before_treatment
+      1381      
     })
 
     output$discharged_before_treatment <- renderText({

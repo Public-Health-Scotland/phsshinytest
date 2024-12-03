@@ -10,15 +10,20 @@ URL: https://github.com/Public-Health-Scotland/phsshinytestgolem
 BugReports: 
     https://github.com/Public-Health-Scotland/phsshinytestgolem/issues
 Imports: 
+    attempt,
     bslib,
     config,
     DBI,
     dplyr,
     DT,
     ggplot2,
+    glue,
     golem,
+    htmltools,
     httr,
     lubridate,
+    pandoc,
+    pkgload,
     plotly,
     rmarkdown,
     RSQLite,

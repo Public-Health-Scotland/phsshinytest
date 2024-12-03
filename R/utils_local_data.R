@@ -34,7 +34,7 @@ data_access <- list(
     get_admissions_stats = function(conn) {
         list(
             active_admissions = DBI::dbGetQuery(conn, "SELECT COUNT(*) FROM episodes WHERE episode_status = 'Active'")[[1]],
-            new_admissions = DBI::dbGetQuery(conn, "SELECT COUNT(*) FROM episodes WHERE referral_date >= CONVERT(datetime, '2023-12-01')")[[1]],
+            #new_admissions = DBI::dbGetQuery(conn, "SELECT COUNT(*) FROM episodes WHERE referral_date >= CONVERT(datetime, '2023-12-01')")[[1]],
             awaiting_treatment = DBI::dbGetQuery(conn, "SELECT COUNT(*) FROM episodes WHERE episode_status = 'Active' AND NOT EXISTS (SELECT * FROM treatments WHERE episodes.episode_id = treatments.episode_id)")[[1]],
             discharged_before_treatment = DBI::dbGetQuery(conn, "SELECT COUNT(*) FROM episodes WHERE discharged_before_treatment")[[1]]
         )
