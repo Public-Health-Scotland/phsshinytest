@@ -3247,7 +3247,7 @@
       "checksum": "5fab0622bfbc3a6bf4f998f03cefec11"
     },
     ".Rprofile": {
-      "checksum": "3344e1676b131d2c676351e458602c35"
+      "checksum": "2f55d702c1139b5537ddc35e13a52add"
     },
     "app.R": {
       "checksum": "2bdcdc7f6ca73b781cbe10ed4a71e993"
@@ -3261,8 +3261,23 @@
     "data/test_data.sqlite": {
       "checksum": "8a4d91423f81904910522926acdf7c1a"
     },
+    "deploy/Dockerfile": {
+      "checksum": "64cd0d127b49802d65fdb09aca415b5e"
+    },
+    "deploy/Dockerfile_base": {
+      "checksum": "e465d719e3a888e83a984852ede0a62a"
+    },
+    "deploy/phsshinytestgolem_0.0.0.9000.tar.gz": {
+      "checksum": "9cfae5dc393a290d872cd36f98d8acdc"
+    },
+    "deploy/README": {
+      "checksum": "bb5e9007d8de479d5c65529a07c3b74f"
+    },
+    "deploy/renv.lock.prod": {
+      "checksum": "7847c5d7f67a1e44ff95291fc9b97166"
+    },
     "DESCRIPTION": {
-      "checksum": "cd1d44d1a1f4f23ac2a054dd88cd9d45"
+      "checksum": "f5db695d193a73b9937f028fd4505465"
     },
     "inst/app/www/custom.css": {
       "checksum": "cdd941a2d9e755082f7799e54a759eef"
@@ -3340,7 +3355,7 @@
       "checksum": "35b3c4b318b1dd1a9b801f35f1e14313"
     },
     "R/mod_report.R": {
-      "checksum": "ba34f648dbb4847c9884041aaec3e314"
+      "checksum": "acaa1df722e55732e93f4e23b29ef927"
     },
     "R/run_app.R": {
       "checksum": "476011bbc4ffefa824e5bfb8386d849b"

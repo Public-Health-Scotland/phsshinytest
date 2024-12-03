@@ -127,12 +127,6 @@ mod_report_server <- function(id){
         output_file <- tempfile(fileext = paste0(tools::file_ext(output_format)))
       }
 
-      # Add debugging messages
-      message("Generating report with:")
-      message("- Template: ", template_file)
-      message("- Output format: ", output_format)
-      message("- Output file: ", output_file)
-
       tryCatch({
         rmarkdown::render(
           system.file("rmd/phs-mgtinfo-template/skeleton.Rmd", package = "phsshinytestgolem"),
@@ -157,20 +151,15 @@ mod_report_server <- function(id){
         value = 0.5,
         {
           tryCatch({
-            message("Starting report preview generation")
             preview_file <- paste0(generate_report("html_document"), ".html")
-
-            message("Reading preview file: ", preview_file)
             if (!file.exists(paste0(preview_file))) {
               stop("Preview file not found")
             }
             preview_content <- readLines(preview_file, warn = FALSE)
             unlink(preview_file)
-
             if (length(preview_content) == 0) {
               stop("Preview content is empty")
             }
-
             content <- paste(preview_content, collapse = "\n")
             body_content <- sub(".*<body[^>]*>(.*)</body>.*", "\\1", content)
             paste0(
