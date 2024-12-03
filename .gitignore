@@ -5,10 +5,6 @@
 .Rbuildignore
 .Rprofile
 
-# Build products
-*.tar.gz
-*.tgz
-
 # System files
 .DS_Store
 Thumbs.db

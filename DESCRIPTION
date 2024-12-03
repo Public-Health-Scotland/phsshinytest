@@ -10,24 +10,22 @@ URL: https://github.com/Public-Health-Scotland/phsshinytestgolem
 BugReports: 
     https://github.com/Public-Health-Scotland/phsshinytestgolem/issues
 Imports: 
-    attempt,
-    DT,
-    glue,
-    htmltools,
-    pkgload,
-    DBI,
-    RSQLite,
     bslib,
     config,
+    DBI,
+    dplyr,
+    DT,
+    ggplot2,
     golem,
+    httr,
+    lubridate,
+    plotly,
+    rmarkdown,
+    RSQLite,
     shinipsum,
     shiny,
-    dplyr,
-    ggplot2,
-    lubridate,
     shinycssloaders,
-    rmarkdown,
-    pandoc
+    tools
 Suggests: 
     spelling,
     testthat (>= 3.0.0)
