@@ -4,9 +4,9 @@
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
 #'
-#' @noRd 
+#' @noRd
 #'
-#' @importFrom shiny NS tagList 
+#' @importFrom shiny NS tagList
 mod_analytics_overview_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -65,10 +65,10 @@ mod_analytics_overview_ui <- function(id) {
     )
   )
 }
-    
+
 #' analytics_overview Server Functions
 #'
-#' @noRd 
+#' @noRd
 mod_analytics_overview_server <- function(id, data){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
@@ -99,7 +99,7 @@ mod_analytics_overview_server <- function(id, data){
 
       p <- filtered_data() |>
         ggplot2::ggplot(ggplot2::aes(
-          x = lubridate::as_date(referral_date), 
+          x = lubridate::as_date(referral_date),
           y = n,
           text = paste0(
             "Date: ", lubridate::as_date(referral_date), "\n",
@@ -107,9 +107,9 @@ mod_analytics_overview_server <- function(id, data){
           ))) +
         ggplot2::geom_line(
           ggplot2::aes(group = 1),
-          colour = "#3F3685"
+          colour = phsstyles::phs_colours("phs-purple")
         ) +
-        ggplot2::geom_point(colour = "#3F3685") +
+        ggplot2::geom_point(colour = phsstyles::phs_colours("phs-purple")) +
         ggplot2::ylim(0, NA) +
         ggplot2::theme_minimal() +
         ggplot2::theme(
@@ -133,12 +133,12 @@ mod_analytics_overview_server <- function(id, data){
           displaylogo = FALSE
         )
     })
-    
+
   })
 }
-    
+
 ## To be copied in the UI
 # mod_analytics_overview_ui("analytics_overview_1")
-    
+
 ## To be copied in the server
 # mod_analytics_overview_server("analytics_overview_1")

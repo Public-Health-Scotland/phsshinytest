@@ -23,6 +23,7 @@ Imports:
     httr,
     lubridate,
     pandoc,
+    phsstyles,
     pkgload,
     plotly,
     rmarkdown,

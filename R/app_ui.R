@@ -27,7 +27,7 @@ app_ui <- function(request) {
         bslib::page_navbar(
           title = "PHS Shiny Test App",
           id = "main_nav",
-          bg = "#3F3685",
+          bg = phsstyles::phs_colours("phs-purple"),
 
           bslib::nav_panel(
             title = "Home",
@@ -92,19 +92,19 @@ app_ui <- function(request) {
               class = "list-unstyled",
               tags$li(
                 tags$a(
-                  href = "https://www.publichealthscotland.scot/contact-us/freedom-of-information-foi-and-environmental-information-regulation-eir-requests/", 
+                  href = "https://www.publichealthscotland.scot/contact-us/freedom-of-information-foi-and-environmental-information-regulation-eir-requests/",
                   "Freedom of Information"
                 )
               ),
               tags$li(
                 tags$a(
-                  href = "https://www.publichealthscotland.scot/terms-and-conditions/", 
+                  href = "https://www.publichealthscotland.scot/terms-and-conditions/",
                   "Terms and Conditions"
                 )
               ),
               tags$li(
                 tags$a(
-                  href = "https://www.publichealthscotland.scot/our-privacy-notice/organisational-background/", 
+                  href = "https://www.publichealthscotland.scot/our-privacy-notice/organisational-background/",
                   "Privacy notice"
                 )
               )
@@ -113,7 +113,7 @@ app_ui <- function(request) {
           div(
             class = "col-md-8",
             p(
-              HTML("&#169"), 
+              HTML("&#169"),
               " Public Health Scotland."
             ),
             p("All content available under the ",
