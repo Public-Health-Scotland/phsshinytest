@@ -5,6 +5,8 @@
 .Rbuildignore
 .Rprofile
 
+rsconnect/
+
 # System files
 .DS_Store
 Thumbs.db
