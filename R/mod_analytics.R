@@ -22,7 +22,7 @@ mod_analytics_ui <- function(id) {
           widths = c(3, 9),
           bslib::nav_panel(
             span(
-              "Overview", 
+              "Overview",
               style = "margin-left: 0.6rem;"
             ),
             value = "overview",
@@ -31,7 +31,7 @@ mod_analytics_ui <- function(id) {
           ),
           bslib::nav_panel(
             span(
-              "Admissions", 
+              "Admissions",
               style = "margin-left: 0.6rem;"
             ),
             value = "admissions",
@@ -40,7 +40,7 @@ mod_analytics_ui <- function(id) {
           ),
           bslib::nav_panel(
             span(
-              "Assessments", 
+              "Assessments",
               style = "margin-left: 0.6rem;"
             ),
             value = "assessments",
@@ -49,7 +49,7 @@ mod_analytics_ui <- function(id) {
           ),
           bslib::nav_panel(
             span(
-              "Treatment", 
+              "Treatment",
               style = "margin-left: 0.6rem;"
             ),
             value = "treatment",
@@ -58,7 +58,7 @@ mod_analytics_ui <- function(id) {
           ),
           bslib::nav_panel(
             span(
-              "Data", 
+              "Data",
               style = "margin-left: 0.6rem;"
             ),
             value = "data",
@@ -107,7 +107,7 @@ mod_analytics_server <- function(id){
     mod_analytics_admissions_server("admissions", data)
     # mod_analytics_assessments_server("assessments", data)
     # mod_analytics_treatment_server("treatment", data)
-    # mod_analytics_data_server("data", data)
+    mod_analytics_data_server("data", data)
 
   })
 }
